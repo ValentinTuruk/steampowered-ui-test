@@ -3,7 +3,7 @@
 <suite name="Download game tests">
     <test verbose="2" name="sale game test">
         <classes>
-            <class name="streampowered.tests.saleGameTest"/>
+            <class name="streampowered.tests.SaleGameTest"/>
         </classes>
     </test>
 </suite>

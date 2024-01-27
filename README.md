@@ -1,2 +1,2 @@
 # Run test
-'mvn test -D suiteFile=saveGame-tests.xml'
+'mvn test -D suiteFile=download-game-tests.xml'
