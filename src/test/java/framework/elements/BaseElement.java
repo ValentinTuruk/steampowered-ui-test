@@ -1,6 +1,7 @@
 package framework.elements;
 
 import framework.Setup;
+import framework.helpers.LanguageManager;
 import framework.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -36,6 +37,7 @@ public class BaseElement extends Setup {
     
     private void waitForElement(WebDriverWait wait) {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathOfElement)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpathOfElement)));
         element = driver.findElement(By.xpath(xpathOfElement));
     }
     
@@ -43,9 +45,13 @@ public class BaseElement extends Setup {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(elementName.xpathOfElement)));
     }
     
+   
     public void hoverOverElement() {
         var action = new Actions(driver);
         waitForElementMiddleTime();
+        if (driver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='4px solid red'", element);
+        }
         action.moveToElement(element).perform();
     }
     
@@ -58,10 +64,6 @@ public class BaseElement extends Setup {
     }
     
     public void click() {
-        waitForElementMiddleTime();
-        if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='4px solid red'", element);
-        }
         hoverOverElement();
         element.click();
     }

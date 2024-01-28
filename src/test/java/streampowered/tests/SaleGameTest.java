@@ -11,6 +11,9 @@ public class SaleGameTest extends Setup {
     public void maxDiscountTest() {
         Browser.navigateTo("base.url");
         var homePage = new HomePage();
-        homePage.getTopNavigationBar().setLanguageOption("ENGLISH");
+        homePage.getTopBarMenu().setLanguage("ENGLISH");
+        homePage.getNavigationMenu().navigateToDepartment("navigation.menu.categories", "navigation.menu.department.action");
+
+        
     }
 }

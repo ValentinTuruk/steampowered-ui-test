@@ -1,6 +1,7 @@
 package framework.helpers;
 
 import framework.Setup;
+import framework.utils.PropertiesReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -29,5 +30,9 @@ public class LanguageManager {
             assert webDriver != null;
             return getApplicatoinLanguage().equals(languageAbbreviation);
         });
+    }
+    
+    public static String getOptionCurrentLocal (String option){
+        return PropertiesReader.getProperty(String.format("localization/%s", LanguageManager.getCurrentLanguage()),option);
     }
 }
