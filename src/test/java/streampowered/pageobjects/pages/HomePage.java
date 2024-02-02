@@ -1,10 +1,10 @@
 package streampowered.pageobjects.pages;
 
 import framework.BasePage;
-import streampowered.pageobjects.menus.NavigationMenu;
-import streampowered.pageobjects.menus.TopBarMenu;
+import streampowered.pageobjects.fragments.NavigationMenu;
+import streampowered.pageobjects.fragments.TopBarMenu;
 
-public class HomePage extends BasePage {
+public final class HomePage extends BasePage {
     private static String xpathWrapper = "//div[@class='home_page_col_wrapper']";
     private TopBarMenu topBarMenu;
     private NavigationMenu navigationMenu;

@@ -2,7 +2,7 @@ package framework.utils;
 
 import java.util.ResourceBundle;
 
-public class PropertiesReader {
+public final class PropertiesReader {
     public static String getProperty(String fileName, String key) {
         try {
             var properties = ResourceBundle.getBundle(fileName);

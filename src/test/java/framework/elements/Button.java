@@ -1,6 +1,6 @@
 package framework.elements;
 
-public class Button extends BaseElement {
+public final class Button extends BaseElement {
     public Button(String xpathOfButton) {
         super(xpathOfButton);
     }

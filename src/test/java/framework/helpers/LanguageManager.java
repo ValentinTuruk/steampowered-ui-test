@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LanguageManager {
+public final class LanguageManager {
     private static WebDriver driver = Setup.driver;
     private static String currentLanguage;
     
@@ -32,7 +32,7 @@ public class LanguageManager {
         });
     }
     
-    public static String getOptionCurrentLocal (String option){
-        return PropertiesReader.getProperty(String.format("localization/%s", LanguageManager.getCurrentLanguage()),option);
+    public static String getLocalName(String option) {
+        return PropertiesReader.getProperty(String.format("localization/%s", LanguageManager.getCurrentLanguage()), option);
     }
 }

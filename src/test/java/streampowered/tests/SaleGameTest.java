@@ -2,18 +2,43 @@ package streampowered.tests;
 
 import framework.Browser;
 import framework.Setup;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import streampowered.pageobjects.pages.HomePage;
+import streampowered.pageobjects.pages.*;
 
 public class SaleGameTest extends Setup {
+    String language;
+    
+    @Parameters({"language"})
+    @BeforeTest
+    public void navigateToTVListPage(String language) {
+        this.language = language;
+    }
     
     @Test
     public void maxDiscountTest() {
         Browser.navigateTo("base.url");
-        var homePage = new HomePage();
-        homePage.getTopBarMenu().setLanguage("ENGLISH");
-        homePage.getNavigationMenu().navigateToDepartment("navigation.menu.categories", "navigation.menu.department.action");
-
         
+        var homePage = new HomePage();
+        homePage.getTopBarMenu().setLanguage(language);
+        homePage.getNavigationMenu().navigateToDepartment("navigationMenu.categories", "navigationMenuDepartment.action");
+        
+        var actionPage = new ActionPage();
+        actionPage.getSaleItamsFragment().navigateToCategory("saleItemsFragment.discounted");
+        actionPage.getSaleItamsFragment().selectMaxDiscountGame();
+        Browser.switchTab();
+        if (actionPage.checkAgeControlPageOpened()) {
+            var ageControlPage = new AgeControlPage();
+            ageControlPage.setPosiriveAge();
+        }
+        
+        var gamePage = new GamePage();
+        gamePage.verifyCorrectGamePage();
+        gamePage.installSteam();
+        gamePage.checkSoftAsserts();
+        
+        var aboutPage = new AboutPage();
+        aboutPage.installSteam();
     }
 }

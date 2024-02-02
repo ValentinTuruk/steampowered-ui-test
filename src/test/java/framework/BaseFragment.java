@@ -3,7 +3,7 @@ package framework;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
-public class BaseFragment {
+public abstract class BaseFragment {
     public BaseFragment() {
         this.driver = Setup.driver;
         this.softAssert = new SoftAssert();
