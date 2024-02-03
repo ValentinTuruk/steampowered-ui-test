@@ -1,19 +1,20 @@
 package framework;
 
 import framework.elements.BaseElement;
-import framework.utils.PropertiesReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.asserts.SoftAssert;
 
+import static framework.utils.PropertiesReader.getConfigProperty;
+
 public abstract class BasePage {
+    protected WebDriver driver;
+    protected SoftAssert softAssert;
+    
     public BasePage(String xpathPrimaryElement) {
         this.driver = Setup.driver;
         this.softAssert = new SoftAssert();
-        BaseElement.checkBaseElement(xpathPrimaryElement);
+        BaseElement.checkBasePageElement(xpathPrimaryElement);
     }
-    
-    protected WebDriver driver;
-    protected SoftAssert softAssert;
     
     public boolean checkAgeControlPageOpened() {
         String currentUrl = driver.getCurrentUrl();
@@ -22,9 +23,5 @@ public abstract class BasePage {
     
     public void checkSoftAsserts() {
         this.softAssert.assertAll();
-    }
-    
-    public String getConfigProperty(String key) {
-        return PropertiesReader.getProperty("config", key);
     }
 }

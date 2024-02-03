@@ -1,5 +1,6 @@
 package framework.utils;
 
+import framework.BrowserFactory;
 import framework.Setup;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -7,12 +8,14 @@ import org.testng.Assert;
 import java.io.File;
 import java.time.Duration;
 
+import static framework.utils.PropertiesReader.getConfigProperty;
+
 public final class DownloadMaster {
-    private static Duration shortTime = Duration.ofSeconds(Long.valueOf(PropertiesReader.getProperty("config", "short.download.waiter")));
+    private static Duration shortTime = Duration.ofSeconds(Long.valueOf(getConfigProperty("download.waiter")));
     private static WebDriverWait wait = new WebDriverWait(Setup.driver, shortTime);
     
     public static void verifyFileDownloaded(String fileName, String extension) {
-        File folder = new File(Setup.downloadPath);
+        File folder = new File(BrowserFactory.downloadPath);
         String regex = String.format("%s\\.%s$", fileName, extension);
         try {
             wait.until(webDriver -> {
@@ -21,6 +24,18 @@ public final class DownloadMaster {
             });
         } catch (Exception e) {
             Assert.fail(String.format("FILE IS NOT DOWNLOADED: %s.%s", fileName, extension));
+        }
+    }
+    
+    public static void cleanDownloadedFiles() {
+        File folder = new File(BrowserFactory.downloadPath);
+        File[] files = folder.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (!file.getName().equals(".gitkeep")) {
+                    file.delete();
+                }
+            }
         }
     }
 }

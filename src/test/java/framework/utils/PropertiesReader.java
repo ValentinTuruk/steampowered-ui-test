@@ -12,4 +12,8 @@ public final class PropertiesReader {
             return null;
         }
     }
+    
+    public static String getConfigProperty(String key) {
+        return getProperty("config", key);
+    }
 }

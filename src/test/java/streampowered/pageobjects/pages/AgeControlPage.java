@@ -11,15 +11,15 @@ public final class AgeControlPage extends BasePage {
         super(xpathAgeGate);
     }
     
-    Dropdown ddwDay = new Dropdown("//select[@id='ageDay']");
-    Dropdown ddwMonth = new Dropdown("//select[@id='ageMonth']");
-    Dropdown ddwYear = new Dropdown("//select[@id='ageYear']");
-    Button btnViewProductPage = new Button("//a[@id='view_product_page_btn']");
+    private Dropdown ddwDay = new Dropdown("//select[@id='ageDay']");
+    private Dropdown ddwMonth = new Dropdown("//select[@id='ageMonth']");
+    private Dropdown ddwYear = new Dropdown("//select[@id='ageYear']");
+    private Button btnViewProductPage = new Button("//a[@id='view_product_page_btn']");
     
-    public void setPosiriveAge() {
-        ddwDay.setValue(getConfigProperty("ageControl.day"));
-        ddwMonth.setValue(getConfigProperty("ageControl.month"));
-        ddwYear.setValue(getConfigProperty("ageControl.year"));
+    public void setPositiveAge() {
+        ddwDay.setValue("ageControlPage.day");
+        ddwMonth.setValue("ageControlPage.month");
+        ddwYear.setValue("ageControlPage.year");
         btnViewProductPage.clickAndWait();
     }
     

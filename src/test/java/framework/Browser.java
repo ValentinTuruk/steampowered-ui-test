@@ -1,7 +1,6 @@
 package framework;
 
 import framework.helpers.LanguageManager;
-import framework.utils.PropertiesReader;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,15 +9,17 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.Set;
 
+import static framework.utils.PropertiesReader.getConfigProperty;
+
 public final class Browser extends Setup {
     
-    private static Duration middlePageUploadTime = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(PropertiesReader.getProperty("config", "middle.page.waiter"))));
+    private static Duration middlePageUploadTime = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(getConfigProperty("middle.page.waiter"))));
     private static WebDriverWait middleWaiterOfPage = new WebDriverWait(driver, middlePageUploadTime);
     
     public static void navigateTo(String urlName) {
-        Duration middleWieter = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(PropertiesReader.getProperty("config", "middle.page.waiter"))));
+        Duration middleWieter = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(getConfigProperty("middle.page.waiter"))));
         WebDriverWait wait = new WebDriverWait(driver, middleWieter);
-        driver.get(PropertiesReader.getProperty("config", urlName));
+        driver.get(getConfigProperty(urlName));
         wait.until((ExpectedCondition<Boolean>) webDriver -> {
             assert webDriver != null;
             return ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete");
@@ -45,6 +46,4 @@ public final class Browser extends Setup {
             return "complete".equals(readyState);
         });
     }
-    
-    
 }

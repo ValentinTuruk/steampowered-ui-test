@@ -18,14 +18,8 @@ public final class CommonFunctions extends Setup {
         return -1;
     }
     
-    public static int getRandomNumber(int number) {
-        Random random = new Random();
-        return random.nextInt(number);
-    }
-    
-    public static int getRandomElementOfList(List<Integer> listOfElements) {
-        Random random = new Random();
-        return listOfElements.get(random.nextInt(listOfElements.size()));
+    public static String formatString(String input){
+        return input.trim().toLowerCase();
     }
     
 }

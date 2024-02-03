@@ -25,20 +25,20 @@ public class SaleGameTest extends Setup {
         homePage.getNavigationMenu().navigateToDepartment("navigationMenu.categories", "navigationMenuDepartment.action");
         
         var actionPage = new ActionPage();
-        actionPage.getSaleItamsFragment().navigateToCategory("saleItemsFragment.discounted");
-        actionPage.getSaleItamsFragment().selectMaxDiscountGame();
+        actionPage.getGameCategoriesMenu().navigateToCategory("saleItemsFragment.discounted");
+        actionPage.getGameCategoriesMenu().selectMaxDiscountGame();
+        
         Browser.switchTab();
         if (actionPage.checkAgeControlPageOpened()) {
             var ageControlPage = new AgeControlPage();
-            ageControlPage.setPosiriveAge();
+            ageControlPage.setPositiveAge();
         }
         
         var gamePage = new GamePage();
         gamePage.verifyCorrectGamePage();
-        gamePage.installSteam();
-        gamePage.checkSoftAsserts();
+        gamePage.navigateToInstallSteamPage();
         
-        var aboutPage = new AboutPage();
-        aboutPage.installSteam();
+        var installSteamPage = new InstallSteamPage();
+        installSteamPage.installSteam();
     }
 }

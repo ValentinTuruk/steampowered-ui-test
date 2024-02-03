@@ -1,11 +1,11 @@
 package framework.elements;
 
-public final class Text extends BaseElement {
-    public Text(String xpathOfText) {
+public final class TextElement extends BaseElement {
+    public TextElement(String xpathOfText) {
         super(xpathOfText);
     }
     
-    public String getElenetText() {
+    public String getElementText() {
         waitForElementMiddleTime();
         return element.getText();
     }

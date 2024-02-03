@@ -22,6 +22,4 @@ public final class HomePage extends BasePage {
     public NavigationMenu getNavigationMenu() {
         return navigationMenu;
     }
-    
-    
 }

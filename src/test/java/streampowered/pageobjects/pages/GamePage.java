@@ -2,8 +2,11 @@ package streampowered.pageobjects.pages;
 
 import framework.BasePage;
 import framework.elements.Button;
-import framework.elements.Text;
+import framework.elements.TextElement;
+import org.testng.Assert;
 import streampowered.SharedData;
+
+import static framework.helpers.CommonFunctions.formatString;
 
 public final class GamePage extends BasePage {
     private static String xpathBackground = "//div[contains(@class,'game_page_background')]";
@@ -12,15 +15,15 @@ public final class GamePage extends BasePage {
         super(xpathBackground);
     }
     
-    Text txtTitle = new Text("//div[@id='appHubAppName']");
-    Button btnInstallSteam = new Button("//a[contains(@class,'header_installsteam_btn header')]");
+    private TextElement txtTitle = new TextElement("//div[@id='appHubAppName']");
+    private Button btnInstallSteam = new Button("//a[contains(@class,'header_installsteam_btn header')]");
     
-    public void installSteam() {
+    public void navigateToInstallSteamPage() {
         btnInstallSteam.clickAndWait();
     }
     
     public void verifyCorrectGamePage() {
-        var actualNameOfGame = txtTitle.getElenetText().trim().toLowerCase();
-        softAssert.assertEquals(actualNameOfGame, SharedData.getNameOfGame());
+        var actualNameOfGame = formatString(txtTitle.getElementText());
+        Assert.assertEquals(actualNameOfGame, SharedData.getNameOfGame());
     }
 }

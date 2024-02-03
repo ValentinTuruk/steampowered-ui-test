@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Download game tests">
     <test verbose="2" name="sale game test">
-        <parameter name="language" value="English"/>
+        <parameter name="language" value="en"/>
         <classes>
             <class name="streampowered.tests.SaleGameTest"/>
         </classes>

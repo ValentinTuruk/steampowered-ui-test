@@ -1,21 +1,20 @@
 package streampowered.pageobjects.pages;
 
 import framework.BasePage;
-import framework.helpers.LanguageManager;
-import streampowered.pageobjects.fragments.SaleItamsFragment;
+import streampowered.pageobjects.fragments.GameCategoriesMenu;
+
+import static framework.helpers.LanguageManager.getLocalName;
 
 public final class ActionPage extends BasePage {
-    private static String xpathPageTitle = String.format("//div[contains(@class,'ContentHubTitle') and text()='%s']", LanguageManager.getLocalName("pageTitle.action"));
-    private SaleItamsFragment saleItamsFragment;
+    private static String xpathPageTitle = String.format("//div[contains(@class,'ContentHubTitle') and text()='%s']", getLocalName("pageTitle.action"));
+    private GameCategoriesMenu gameCategoriesMenu;
     
     public ActionPage() {
         super(xpathPageTitle);
-        this.saleItamsFragment = new SaleItamsFragment();
+        this.gameCategoriesMenu = new GameCategoriesMenu();
     }
     
-    public SaleItamsFragment getSaleItamsFragment() {
-        return saleItamsFragment;
+    public GameCategoriesMenu getGameCategoriesMenu() {
+        return gameCategoriesMenu;
     }
-    
-    
 }
