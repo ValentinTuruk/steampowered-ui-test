@@ -39,6 +39,6 @@ public class SaleGameTest extends Setup {
         gamePage.navigateToInstallSteamPage();
         
         var installSteamPage = new InstallSteamPage();
-        installSteamPage.installSteam();
+        installSteamPage.downloadAndVerifySteamSetupFile();
     }
 }

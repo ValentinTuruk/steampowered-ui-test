@@ -15,7 +15,7 @@ public final class InstallSteamPage extends BasePage {
     
     private Label lblInstallSteam = new Label("//div[@id='about_header']//a[contains(@class, 'about_install_steam_link')]");
     
-    public void installSteam() {
+    public void downloadAndVerifySteamSetupFile() {
         lblInstallSteam.clickAndWait();
         var fileName = getConfigProperty("downloadFile.name");
         var fileExtension = getConfigProperty("downloadFile.extension");
