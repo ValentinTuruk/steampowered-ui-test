@@ -22,7 +22,6 @@ public class GameCategoriesMenu extends BaseFragment {
     
     public void navigateToCategory(String categoryName) {
         lblCategories.scrollToCenter();
-        ;
         lblCategories.click(categoryName);
     }
     
@@ -43,7 +42,7 @@ public class GameCategoriesMenu extends BaseFragment {
             }
         }
         int indexOfItem = lstDiscounts.getRandomElementFromList(elementIndexes);
-        
+
         lstGameTitles.waitForElementFromListMiddleTime(indexOfItem + 1);
         SharedData.setNameOfGame(formatString(lstGameTitles.getElementText()));
         lstGameWidget.clickAndWait(indexOfItem + 1);

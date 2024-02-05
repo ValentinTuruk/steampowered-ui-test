@@ -99,4 +99,13 @@ public abstract class BaseElement extends Setup {
         JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
         jsExecutor.executeScript("arguments[0].scrollIntoView({block: 'center'});", element);
     }
+    
+    public String getElementText() {
+        waitForElementMiddleTime();
+        return element.getText();
+    }
+    
+    public WebElement getInnerElement(String xpathOfElement) {
+        return element.findElement(By.xpath(xpathOfElement));
+    }
 }
