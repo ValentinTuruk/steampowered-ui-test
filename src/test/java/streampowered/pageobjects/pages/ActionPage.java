@@ -1,7 +1,7 @@
 package streampowered.pageobjects.pages;
 
 import framework.BasePage;
-import streampowered.pageobjects.fragments.GameCategoriesMenu;
+import streampowered.pageobjects.navMenus.GameCategoriesMenu;
 
 import static framework.helpers.LanguageManager.getLocalName;
 

@@ -1,4 +1,4 @@
-package streampowered.pageobjects.fragments;
+package streampowered.pageobjects.navMenus;
 
 import framework.BaseFragment;
 import framework.Browser;

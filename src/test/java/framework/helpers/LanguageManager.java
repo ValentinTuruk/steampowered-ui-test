@@ -42,7 +42,7 @@ public final class LanguageManager {
     }
     
     private static void waitForLanguageChanges(String languageCode) {
-        var timer = Duration.ofSeconds(Long.valueOf(getConfigProperty("language.waiter")));
+        var timer = Duration.ofSeconds(Long.valueOf(getConfigProperty("middle.page.waiter")));
         var wait = new WebDriverWait(driver, timer);
         wait.until((ExpectedCondition<Boolean>) webDriver -> {
             assert webDriver != null;

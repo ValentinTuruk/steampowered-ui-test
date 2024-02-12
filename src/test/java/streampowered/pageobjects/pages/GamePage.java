@@ -2,7 +2,7 @@ package streampowered.pageobjects.pages;
 
 import framework.BasePage;
 import framework.elements.Button;
-import framework.elements.TextElement;
+import framework.elements.TextBox;
 import org.testng.Assert;
 import streampowered.SharedData;
 
@@ -15,7 +15,7 @@ public final class GamePage extends BasePage {
         super(xpathBackground);
     }
     
-    private TextElement txtTitle = new TextElement("//div[@id='appHubAppName']");
+    private TextBox txtTitle = new TextBox("//div[@id='appHubAppName']");
     private Button btnInstallSteam = new Button("//a[contains(@class,'header_installsteam_btn header')]");
     
     public void navigateToInstallSteamPage() {

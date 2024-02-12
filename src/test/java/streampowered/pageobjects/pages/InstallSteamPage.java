@@ -21,5 +21,4 @@ public final class InstallSteamPage extends BasePage {
         var fileExtension = getConfigProperty("downloadFile.extension");
         DownloadMaster.verifyFileDownloaded(fileName, fileExtension);
     }
-    
 }

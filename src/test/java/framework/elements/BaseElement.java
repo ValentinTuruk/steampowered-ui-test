@@ -44,12 +44,23 @@ public abstract class BaseElement extends Setup {
         element = driver.findElement(By.xpath(String.format(xpathOfElement, optionName)));
     }
     
+    private void waitForElementByAttribute(WebDriverWait wait, String xpathAttributeName) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(String.format(xpathOfElement, xpathAttributeName))));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(String.format(xpathOfElement, xpathAttributeName))));
+        element = driver.findElement(By.xpath(String.format(xpathOfElement, xpathAttributeName)));
+    }
+    
+    
     public void waitForElementMiddleTime() {
         waitForElement(middleWaiterOfElement);
     }
     
     public void waitForElementMiddleTime(String optionName) {
         waitForElement(middleWaiterOfElement, optionName);
+    }
+    
+    public void waitForElementByAttributeMiddleTime(String xpathAttributeName) {
+        waitForElementByAttribute(middleWaiterOfElement, xpathAttributeName);
     }
     
     public void hoverOverElement() {
@@ -70,6 +81,15 @@ public abstract class BaseElement extends Setup {
         action.moveToElement(element).perform();
     }
     
+    public void hoverOverElementByAttribute(String xpathAttributeName) {
+        var action = new Actions(driver);
+        waitForElementByAttributeMiddleTime(xpathAttributeName);
+        if (driver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'", element);
+        }
+        action.moveToElement(element).perform();
+    }
+    
     public void click() {
         hoverOverElement();
         element.click();
@@ -77,6 +97,11 @@ public abstract class BaseElement extends Setup {
     
     public void click(String optionName) {
         hoverOverElement(optionName);
+        element.click();
+    }
+    
+    public void clickByAttribute(String xpathAttributeName) {
+        hoverOverElementByAttribute(xpathAttributeName);
         element.click();
     }
     

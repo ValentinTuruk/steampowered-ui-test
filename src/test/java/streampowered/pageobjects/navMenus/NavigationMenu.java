@@ -1,4 +1,4 @@
-package streampowered.pageobjects.fragments;
+package streampowered.pageobjects.navMenus;
 
 import framework.BaseFragment;
 import framework.elements.Label;
@@ -11,5 +11,4 @@ public class NavigationMenu extends BaseFragment {
         lblCategories.hoverOverElement(categoryName);
         lblDepartments.clickAndWait(departmentName);
     }
-    
 }

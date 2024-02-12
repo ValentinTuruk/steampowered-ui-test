@@ -12,7 +12,7 @@ public class SaleGameTest extends Setup {
     
     @Parameters({"language"})
     @BeforeTest
-    public void navigateToTVListPage(String language) {
+    public void setLanguage(String language) {
         this.language = language;
     }
     
