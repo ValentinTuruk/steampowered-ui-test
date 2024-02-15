@@ -28,7 +28,7 @@ public final class ListOfElements extends BaseElement {
     }
     
     public void waitForListOfElementsMiddleTime(int elementsNumber) {
-        waitForListOfElements(middleWaiterOfElement, elementsNumber);
+        waitForListOfElements(getMiddleWaiterOfElement(), elementsNumber);
     }
     
     private void scrollListOfElementsIntoView() {
@@ -68,7 +68,7 @@ public final class ListOfElements extends BaseElement {
     }
     
     public void waitForElementFromListMiddleTime(int number) {
-        waitForElementFromList(middleWaiterOfElement, number);
+        waitForElementFromList(getMiddleWaiterOfElement(), number);
     }
     
     public String getElementText() {

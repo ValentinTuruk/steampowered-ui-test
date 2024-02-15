@@ -3,13 +3,13 @@ package framework.elements;
 import framework.Browser;
 import framework.Setup;
 import framework.helpers.LanguageManager;
+import framework.utils.SoftAsserts;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import java.time.Duration;
 
@@ -25,11 +25,14 @@ public abstract class BaseElement extends Setup {
     
     public static void checkBasePageElement(String xpathPrimaryElement) {
         var baseElement = driver.findElements(By.xpath(xpathPrimaryElement)).stream().findFirst().orElse(null);
-        Assert.assertNotNull(baseElement, "The page did not load successfully.");
+        SoftAsserts.softAssert.assertNotNull(baseElement, "The page did not load successfully.");
     }
     
     private Duration middleTime = Duration.ofSeconds(Long.valueOf(getConfigProperty("middle.element.waiter")));
-    WebDriverWait middleWaiterOfElement = new WebDriverWait(driver, middleTime);
+    
+    public WebDriverWait getMiddleWaiterOfElement() {
+        return new WebDriverWait(driver, middleTime);
+    }
     
     private void waitForElement(WebDriverWait wait) {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathOfElement)));
@@ -52,15 +55,15 @@ public abstract class BaseElement extends Setup {
     
     
     public void waitForElementMiddleTime() {
-        waitForElement(middleWaiterOfElement);
+        waitForElement(getMiddleWaiterOfElement());
     }
     
     public void waitForElementMiddleTime(String optionName) {
-        waitForElement(middleWaiterOfElement, optionName);
+        waitForElement(getMiddleWaiterOfElement(), optionName);
     }
     
     public void waitForElementByAttributeMiddleTime(String xpathAttributeName) {
-        waitForElementByAttribute(middleWaiterOfElement, xpathAttributeName);
+        waitForElementByAttribute(getMiddleWaiterOfElement(), xpathAttributeName);
     }
     
     public void hoverOverElement() {

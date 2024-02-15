@@ -1,6 +1,7 @@
 package framework;
 
 import framework.utils.DownloadMaster;
+import framework.utils.SoftAsserts;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -16,6 +17,7 @@ public abstract class Setup {
     protected void start() {
         driver = BrowserFactory.getInstance(Objects.requireNonNull(getConfigProperty("browser.name")));
         DownloadMaster.cleanDownloadedFiles();
+        SoftAsserts.cleanSoftAsserts();
     }
     
     @AfterSuite
@@ -23,5 +25,6 @@ public abstract class Setup {
         if (driver != null) {
             driver.quit();
         }
+        SoftAsserts.checkSoftAsserts();
     }
 }

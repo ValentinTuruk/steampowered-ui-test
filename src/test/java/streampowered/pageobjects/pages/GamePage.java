@@ -3,7 +3,7 @@ package streampowered.pageobjects.pages;
 import framework.BasePage;
 import framework.elements.Button;
 import framework.elements.TextBox;
-import org.testng.Assert;
+import framework.utils.SoftAsserts;
 import streampowered.SharedData;
 
 import static framework.helpers.CommonFunctions.formatString;
@@ -24,6 +24,6 @@ public final class GamePage extends BasePage {
     
     public void verifyCorrectGamePage() {
         var actualNameOfGame = formatString(txtTitle.getElementText());
-        Assert.assertEquals(actualNameOfGame, SharedData.getNameOfGame());
+        SoftAsserts.softAssert.assertEquals(actualNameOfGame, SharedData.getNameOfGame());
     }
 }

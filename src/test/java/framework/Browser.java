@@ -14,8 +14,9 @@ import static framework.utils.PropertiesReader.getConfigProperty;
 public final class Browser extends Setup {
     
     private static Duration middlePageUploadTime = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(getConfigProperty("middle.page.waiter"))));
-    private static WebDriverWait middleWaiterOfPage = new WebDriverWait(driver, middlePageUploadTime);
-    
+    public static WebDriverWait getMiddleWaiterOfPage() {
+        return new WebDriverWait(driver, middlePageUploadTime);
+    }
     public static void navigateTo(String urlName) {
         Duration middleWieter = Duration.ofSeconds(Long.valueOf(Objects.requireNonNull(getConfigProperty("middle.page.waiter"))));
         WebDriverWait wait = new WebDriverWait(driver, middleWieter);
@@ -40,7 +41,7 @@ public final class Browser extends Setup {
     }
     
     public static void waitForPageToLoad() {
-        middleWaiterOfPage.until((ExpectedCondition<Boolean>) webDriver -> {
+        getMiddleWaiterOfPage().until((ExpectedCondition<Boolean>) webDriver -> {
             assert webDriver != null;
             String readyState = (String) ((JavascriptExecutor) webDriver).executeScript("return document.readyState");
             return "complete".equals(readyState);

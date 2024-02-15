@@ -15,7 +15,7 @@ import static framework.helpers.CommonFunctions.formatString;
 public class GameCategoriesMenu extends BaseFragment {
     private final int ITEMS_NUMBER = 12;
     
-    private Label lblCategories = new Label("//div[contains(@class, 'saleitembrowser') and contains (text(), '%s')]");
+    private Label lblCategories = new Label("//div[contains(@class, 'Focusable') and contains (text(), '%s')]");
     private ListOfElements lstDiscounts = new ListOfElements("//div[contains(@class, 'sale_item')]//div[contains(@class, 'StoreSaleDiscountBox')]");
     private ListOfElements lstGameWidget = new ListOfElements("(//div[contains(@class, 'sale_item')]//div[contains(@class, 'salepreviewwidgets_StoreSaleWidgetHalfLeft')])[%s]");
     private ListOfElements lstGameTitles = new ListOfElements("(//div[contains(@class, 'sale_item')]//div[contains(@class, 'salepreviewwidgets_Title')])[%s]/a");
